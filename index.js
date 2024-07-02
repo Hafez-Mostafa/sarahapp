@@ -5,6 +5,7 @@ import AppError from './utils/AppError.js';
 import  {globalErrorHandling}  from './utils/errorHandling.js';
 import  connectionDB  from './db/connectionDB.js';
 import  userRoute  from './src/modules/users/user.route.js';
+import messageRoute from './src/modules/messages/message.route.js';
 
 
 
@@ -28,6 +29,8 @@ app.use(express.json());
 
 
 app.use('/users',userRoute)
+app.use('/messages',messageRoute)
+
 app.get('/', (req, res, next) => {
     res.status(200).send('Hello SarahApp!');
 });

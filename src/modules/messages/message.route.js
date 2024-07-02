@@ -6,15 +6,8 @@ import * as MV from "./message.validation.js";
 import { auth } from "../../middleware/auth.js";
 
 const route = Router()
-
-
-route.post('/',validation(MV.newMessage),auth(),MC.newMessage)
+route.post('/message/:id',validation(MV.createValidMessage),auth(),MC.createMessage)
 route.get('/',auth(),MC.readingMessage)
-route.delete('/delete/:id',auth(),MC.deletingmessage)
-
-
-
-
-
+route.delete('/delete/:id',validation(MV.deleteValidMessage) ,auth(),MC.deletingmessage)
 
 export default route
