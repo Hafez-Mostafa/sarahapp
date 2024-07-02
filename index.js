@@ -24,7 +24,7 @@ app.use(express())
 app.use(express.json());
 
 
-app.use(globalErrorHandling);
+
 
 
 app.use('/users',userRoute)
@@ -36,6 +36,7 @@ app.get('*', (req, res,next) =>{
     return next(new AppError(`Invalid URL : ${req.originalUrl}`,404))
 })
 
+app.use(globalErrorHandling);
 
 const PORT =  process.env.PORT||3000
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}!`))
