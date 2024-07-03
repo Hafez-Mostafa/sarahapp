@@ -26,6 +26,7 @@ export const createMessage = asyncHandling(async (req, res, next) => {
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=Reading  Messages-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 export const readingMessage = asyncHandling(async (req, res, next) => {
     const messages = await messageModel.find({})
+    if(messages.length < 1) return next(new AppError('No Messages Available!', 404))
     if (!messages) return next(new AppError('Error fetching message!', 400));
     res.status(201).json({ msg: messages });
 });
